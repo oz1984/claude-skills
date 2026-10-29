@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mozury Facebook Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kufam:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0A2E26; --green: #0F3D33; --green-soft: #1B5245;
+    --cream: #F7F3E8; --gold: #D9A441;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--green-deep); color: var(--cream);
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 24px 16px;
+  }
+  canvas { width: 100%; max-width: 1640px; height: auto; aspect-ratio: 1640 / 924; display: block;
+    border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,.35); background: var(--green); }
+  .bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  button, .link {
+    font: 600 15px "IBM Plex Sans Arabic", sans-serif; border-radius: 999px; padding: 11px 22px;
+    cursor: pointer; text-decoration: none; border: 1px solid transparent;
+  }
+  button { background: var(--gold); color: var(--green-deep); }
+  button:disabled { opacity: .5; cursor: wait; }
+  .link { color: var(--cream); border-color: rgba(247,243,232,.3); }
+  .note { font-size: 14px; opacity: .75; text-align: center; max-width: 640px; margin: 0; }
+  .note[hidden] { display: none; }
+</style>
+</head>
+<body>
+  <canvas id="cover" width="1640" height="924" aria-label="Mozury Facebook cover: Umayyad Square at night"></canvas>
+  <div class="bar">
+    <button id="dl" disabled>Download PNG</button>
+    <a class="link" href="mozury-facebook-cover-preview.html">Desktop &amp; mobile preview</a>
+  </div>
+  <p class="note" id="note" hidden></p>
+  <input type="file" id="logoFile" accept="image/png" hidden>
+
+<script src="mozury-cover.js"></script>
+<script>
+  (function () {
+    var canvas = document.getElementById('cover');
+    var dl = document.getElementById('dl');
+    var note = document.getElementById('note');
+    var picker = document.getElementById('logoFile');
+
+    function draw(logo) {
+      if (!logo) {
+        note.hidden = false;
+        note.textContent = 'Logo not found at "' + MozuryCover.LOGO_SRC + '", so a text wordmark is shown. Keep this page in "important website things/" next to the "logo and pics" folder.';
+      } else {
+        note.hidden = true;
+      }
+      return MozuryCover.render(canvas, logo).then(function () { dl.disabled = false; });
+    }
+
+    MozuryCover.loadLogo().then(draw);
+
+    dl.addEventListener('click', function () {
+      MozuryCover.download(canvas, function () {
+        note.hidden = false;
+        note.textContent = 'Your browser blocks exporting a page opened from disk with a local image. Pick mozury-logo-cream-transparent.png once and the download will start (it is remembered next time).';
+        picker.click();
+      });
+    });
+
+    picker.addEventListener('change', function () {
+      if (!picker.files[0]) return;
+      MozuryCover.useLogoFile(picker.files[0]).then(draw).then(function () {
+        MozuryCover.download(canvas);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
