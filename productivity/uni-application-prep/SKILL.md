@@ -6,15 +6,15 @@ description: Researches CS bachelor's programmes in Berlin, Munich, Warsaw and A
 # University application prep
 
 ## Profile (read from the user's memory or ask once)
-- Bachelor's in CS / software engineering. English-taught is the priority, but German-taught programmes are acceptable (flag the German language requirement, e.g. DSH/TestDaF level, and the time needed to reach it)
-- Tuition at most about 20k per year
+- Bachelor's in CS / software engineering. English-taught and German-taught programmes are equally acceptable (for German-taught ones, flag the language requirement, e.g. DSH/TestDaF level, and the time needed to reach it)
+- Tuition at most about 20k USD per year (convert EUR/PLN figures and state the exchange rate and date used)
 - Spring intake is preferred but not required; autumn intakes are fine
 - Goals in priority order: 1) AI systems engineering, 2) data and distributed systems, 3) AI security
 - Judging criteria: compulsory courses over electives, up-to-date study plan, teaching quality, low credit-hour load, free time for self-study, path to entrepreneurship. Rankings are a tie-breaker only.
 - Applicant holds a Syrian secondary certificate: check recognition rules, Studienkolleg / foundation-year requirements, and visa timelines for each country.
 
 ## Step 1: Discover
-For each of Berlin, Munich, Warsaw, Amsterdam, search official university pages (not aggregators) for English-taught CS / software engineering / AI / data science bachelor's programmes. Use WebSearch, then WebFetch the programme page. One subagent per city is fine.
+For each of Berlin, Munich, Warsaw, Amsterdam, search official university pages (not aggregators) for English-taught or German-taught CS / software engineering / AI / data science bachelor's programmes. Use WebSearch, then WebFetch the programme page. One subagent per city is fine.
 
 ## Step 2: Filter (strict)
 Keep a programme only if its compulsory modules clearly cover at least two of: operating systems, networks, distributed systems, databases/data engineering, security, ML/AI systems, maths. Drop programmes that fail this, even if the university is famous. Record why each dropped programme was dropped.
