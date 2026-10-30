@@ -1,0 +1,13 @@
+{
+  "name": "uni-application-prep",
+  "description": "Researches CS bachelor's programmes in Berlin, Munich, Warsaw and Amsterdam, filters them strictly on compulsory systems/AI/data coverage, verifies every fact (tuition, deadlines, Syrian-certificate recognition, Studienkolleg, portal, credit load) against official pages, and prepares a ready-to-submit application pack per shortlisted programme. Never submits applications, creates portal accounts, pays fees, or invents facts or achievements.",
+  "version": "2.12.0",
+  "author": {
+    "name": "oz1984",
+    "url": "https://github.com/oz1984"
+  },
+  "homepage": "https://github.com/alirezarezvani/claude-skills/tree/main/productivity/uni-application-prep",
+  "repository": "https://github.com/alirezarezvani/claude-skills",
+  "license": "MIT",
+  "skills": ["./"]
+}
